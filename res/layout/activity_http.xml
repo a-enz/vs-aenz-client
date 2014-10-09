@@ -2,7 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
+    <Button
+       android:id="@+id/btn_http_raw"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onClickRaw"
+       android:text="@string/btn_raw" />
     
+	<Button
+       android:id="@+id/btn_http_lib"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onClickLib"
+       android:text="@string/btn_lib" />
+	
+	<Button
+       android:id="@+id/btn_http_json"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onClickJson"
+       android:text="@string/btn_json" />
 
 </LinearLayout>

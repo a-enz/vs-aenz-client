@@ -1,6 +1,7 @@
 package ch.ethz.inf.vs.a2.aenz.client;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +38,9 @@ public class MainActivity extends ActionBarActivity {
     }
     
     public void onClickHttp(View v){
-    	Toast.makeText(this, "test", Toast.LENGTH_LONG).show();
+    	Intent intent = new Intent(this, HttpActivity.class);
+    	this.startActivity(intent);
+    	
     }
     
     public void onClickWsdl(View v) {

@@ -4,6 +4,7 @@ import ch.ethz.inf.vs.a2.aenz.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -15,7 +16,7 @@ public class ClientSocket implements HttpSocket, RemoteServerConfiguration{
 	private Socket socket;
 	private String host;
 	private int restPort;
-	private final int LOCALPORT = 8080;
+	private final int LOCALPORT = 4321;
 
 	public ClientSocket() throws UnknownHostException, IOException {
 		host = HOST;
@@ -41,11 +42,17 @@ public class ClientSocket implements HttpSocket, RemoteServerConfiguration{
 	public void setPort(int port) {
 		this.restPort = port;
 	}
+	
+	public boolean isConnected() {
+		return (socket != null) ? socket.isConnected() : false;
+	}
 
 	@Override
 	public String execute(String request) {
+		
 		try {
-			socket = new Socket(host, restPort);
+			socket = new Socket(host, restPort, InetAddress.getLocalHost(), LOCALPORT);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			return "Connection could not be established";
