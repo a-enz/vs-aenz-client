@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">VS aenz Client</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Sensirion Webservice</string>
     <string name="action_settings">Settings</string>
+    <string name="btn_http">HTTP</string>
+    <string name="btn_wsdl">WSDL</string>
 
 </resources>
