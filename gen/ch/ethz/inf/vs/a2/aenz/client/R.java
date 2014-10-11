@@ -1200,10 +1200,12 @@ containing a value of this type.
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_http=0x7f030018;
         public static final int activity_main=0x7f030019;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
+        public static final int activity_soapclient=0x7f03001a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
+        public static final int soapclient=0x7f0c0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1249,13 +1251,14 @@ containing a value of this type.
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
         public static final int btn_http=0x7f0a0010;
-        public static final int btn_json=0x7f0a0014;
-        public static final int btn_lib=0x7f0a0013;
-        public static final int btn_raw=0x7f0a0012;
+        public static final int btn_json=0x7f0a0015;
+        public static final int btn_lib=0x7f0a0014;
+        public static final int btn_raw=0x7f0a0013;
         public static final int btn_wsdl=0x7f0a0011;
         public static final int hello_world=0x7f0a000e;
-        public static final int title_activity_sensor=0x7f0a0015;
-        public static final int txt_response=0x7f0a0016;
+        public static final int title_activity_sensor=0x7f0a0016;
+        public static final int title_activity_soapclient=0x7f0a0012;
+        public static final int txt_response=0x7f0a0017;
     }
     public static final class style {
         /** 

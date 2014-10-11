@@ -26,6 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SOAPClient"
+            android:label="@string/title_activity_soapclient" >
+        </activity>
 		<activity
             android:name=".HttpActivity"
             android:label="@string/title_activity_sensor" >
