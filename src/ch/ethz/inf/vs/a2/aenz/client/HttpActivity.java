@@ -5,6 +5,8 @@ import java.net.UnknownHostException;
 import java.util.concurrent.ExecutionException;
 
 import ch.ethz.inf.vs.a2.aenz.client.R;
+import ch.ethz.inf.vs.a2.aenz.http.Requester;
+import ch.ethz.inf.vs.a2.aenz.httpclient.ClientRequester2;
 import ch.ethz.inf.vs.a2.aenz.httpclient.ClientSocket;
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -30,7 +32,7 @@ public class HttpActivity extends Activity{
     	HttpTask request = new HttpTask();
     	request.execute(new String[]{});
     	try {
-			responseTxt.setText("Response" + request.get());
+			responseTxt.setText("Response Raw: " + request.get());
 		} catch (InterruptedException e) {
 			Log.d(TAG, "InterruptedException");
 			e.printStackTrace();
@@ -41,7 +43,17 @@ public class HttpActivity extends Activity{
     }
     
     public void onClickLib(View v) {
-    	
+    	HttpTask2 request = new HttpTask2();
+    	request.execute(new String[]{});
+    	try {
+			responseTxt.setText("Response Lib: " + request.get());
+		} catch (InterruptedException e) {
+			Log.d(TAG, "InterruptedException");
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			Log.d(TAG, "ExecutionException");
+			e.printStackTrace();
+		}
     }
     
     public void onClickJson(View v) {
@@ -61,14 +73,21 @@ public class HttpActivity extends Activity{
 				ClientSocket socket = new ClientSocket();
 				return socket.execute(null);
 			} catch (UnknownHostException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return "Host not found";
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return "Sth wrong with IO";
 			}
+		}
+    }
+    
+    private class HttpTask2 extends AsyncTask<String, String, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+			ClientRequester2 requester2 = new ClientRequester2();
+			return requester2.executeRequest();
 		}
     }
 

@@ -76,9 +76,10 @@ public class ClientSocket implements HttpSocket, RemoteServerConfiguration{
 			Log.d("TAG", "Socket connected: " + Boolean.valueOf(isConnected()).toString());
 			//writer.write(new ClientRequest().generateRequest(host, null));
 			String simpleRequest = new ClientRequest().generateRequest(host+":"+restPort, "/sunspots");
-			writer.print(simpleRequest);
 			writer.write(simpleRequest);
+			writer.print(simpleRequest);
 			writer.flush();
+			Log.d(TAG, "WriterError: " + writer.checkError());
 			String tmp = reader.readLine();
 			socket.close();
 			Log.d(TAG, "Request send: " + simpleRequest);
