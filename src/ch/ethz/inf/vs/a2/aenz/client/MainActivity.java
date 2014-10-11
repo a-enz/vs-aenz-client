@@ -1,6 +1,8 @@
 package ch.ethz.inf.vs.a2.aenz.client;
 
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +39,9 @@ public class MainActivity extends Activity {
     }
     
     public void onClickHttp(View v){
-    	Toast.makeText(this, "test", Toast.LENGTH_LONG).show();
+    	Intent intent = new Intent(this, HttpActivity.class);
+    	this.startActivity(intent);
+    	
     }
     
     public void onClickWsdl(View v) {

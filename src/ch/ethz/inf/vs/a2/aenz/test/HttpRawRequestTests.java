@@ -149,7 +149,7 @@ public class HttpRawRequestTests {
 		Assert.assertTrue("Header field \"Accept\" expected, but not found.", found);;
 	}
 	
-	private String createRequest(){
+	private String createRequest() {
 		HttpRawRequest request = HttpRawRequestFactory.getInstance();
 		return request.generateRequest(TEST_HOST, TEST_PORT, TEST_PATH);
 	}

@@ -7,6 +7,10 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="19" />
+    
+    <uses-permission
+	    android:name="android.permission.INTERNET">
+	</uses-permission>
 
     <application
         android:allowBackup="true"
@@ -26,6 +30,11 @@
             android:name=".SOAPClient"
             android:label="@string/title_activity_soapclient" >
         </activity>
+		<activity
+            android:name=".HttpActivity"
+            android:label="@string/title_activity_sensor" >
+        </activity>
+        <service android:name=".HttpService" 
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
     </application>
-
 </manifest>
