@@ -11,6 +11,6 @@
     <string name="btn_lib">Lib</string>
     <string name="btn_json">Json</string>
 	<string name="title_activity_sensor">Rest Service</string>
-    <string name="txt_response">Choose RequesType</string>
+    <string name="txt_response">Choose Requesttype</string>
 
 </resources>
