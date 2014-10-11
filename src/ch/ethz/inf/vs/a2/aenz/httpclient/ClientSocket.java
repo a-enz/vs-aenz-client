@@ -73,12 +73,16 @@ public class ClientSocket implements HttpSocket, RemoteServerConfiguration{
 			out = socket.getOutputStream();
 			writer = new PrintWriter(out);
 			
-			Log.d("HttpClient", "Socket connected: " + Boolean.valueOf(isConnected()).toString());
-			writer.write(new ClientRequest().generateRequest(host, null));
+			Log.d("TAG", "Socket connected: " + Boolean.valueOf(isConnected()).toString());
+			//writer.write(new ClientRequest().generateRequest(host, null));
+			String simpleRequest = new ClientRequest().generateRequest(host+":"+restPort, "/sunspots");
+			writer.print(simpleRequest);
+			writer.write(simpleRequest);
 			writer.flush();
 			String tmp = reader.readLine();
 			socket.close();
-			Log.d(TAG, "Request send?");
+			Log.d(TAG, "Request send: " + simpleRequest);
+			Log.d(TAG, "Response: " + tmp);
 			return tmp;
 			
 		} catch (UnknownHostException e) {
