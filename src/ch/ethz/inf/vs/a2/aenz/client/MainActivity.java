@@ -1,12 +1,14 @@
 package ch.ethz.inf.vs.a2.aenz.client;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +34,13 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    public void onClickHttp(View v){
+    	Toast.makeText(this, "test", Toast.LENGTH_LONG).show();
+    }
+    
+    public void onClickWsdl(View v) {
+    	
     }
 }
