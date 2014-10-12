@@ -3,11 +3,7 @@ package ch.ethz.inf.vs.a2.aenz.httpclient;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.net.http.AndroidHttpClient;
 import android.util.Log;
 
@@ -23,11 +19,12 @@ public class ClientRequester2 implements Requester, RemoteServerConfiguration{
 	private BufferedReader reader;
 	private final String TAG = "ClientRequester2";
 	
-	public ClientRequester2() {
+	public ClientRequester2(boolean json) {
 		HTTP_REQUEST = new HttpGet(URL);
-		HTTP_REQUEST.addHeader("Accept", "application/json");
+		if (json) HTTP_REQUEST.addHeader("Accept", "application/json");
 		httpClient = AndroidHttpClient.newInstance("Lib");
 	}
+	
 	@Override
 	public String executeRequest() throws NullPointerException {
 		try {

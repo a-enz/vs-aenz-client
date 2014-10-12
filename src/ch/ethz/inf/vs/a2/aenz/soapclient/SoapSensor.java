@@ -5,34 +5,27 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import ch.ethz.inf.vs.a2.aenz.http.Requester;
 import ch.ethz.inf.vs.a2.aenz.sensor.AbstractSensor;
 
 public class SoapSensor extends AbstractSensor{
 	
+	Requester req;
+	
 	public SoapSensor(){
-
+		req = new SoapRequest();
 	}
 
 	@Override
 	public void getTemperature() throws NullPointerException {
-		try{
-//			HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
-//			
-//			androidHttpTransport.call(SOAP_ACTION, soapEnv);
-//			
-//			response = (SoapObject) soapEnv.bodyIn;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
-		
+		new AsyncWorker().execute(new Requester[]{req});
+		//TODO call asyncWorker
 	}
 
 	@Override
 	public double parseResponse(String response) {
-		// TODO do something with 'response' 
-		return 0;
+		return Double.NaN;
 	}
 
 }

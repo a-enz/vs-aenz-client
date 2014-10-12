@@ -52,13 +52,13 @@ public class SoapActivity extends Activity implements SensorListener {
 	@Override
 	public void onReceiveDouble(double value) {
 		// TODO Auto-generated method stub
-		
+		disp.setText("Temperature at Spot3: " + value);
 	}
 
 	@Override
 	public void onReceiveString(String message) {
 		// TODO Auto-generated method stub
-		
+		disp.setText(message);
 	}
 	
 	public void onClickSoapManual(View v) {
