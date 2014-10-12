@@ -11,6 +11,7 @@ public class ClientRequest implements HttpRawRequest{
 	final String CONNECTION = "Connection: close\r\n";
 	final String HOST = "Host: ";
 	final String CACHE = "Cache-Control: no-cache\r\n";
+	final String dummy = "GET /sunspots HTTP/1.1\r\nHost: vslab.inf.ethz.ch:8081\r\nConnection: keep-alive\r\nCache-Control: no-cache\r\nAccept: */*\r\nAccept-Encoding: gzip, deflate, sdch\r\nAccept-Language: en-Us,en;q=0.8,de;q=0.6\r\n";
 	
 	/**
 	 * Generates the (very simple) HTTP Request
@@ -22,7 +23,8 @@ public class ClientRequest implements HttpRawRequest{
 	public String generateRequest(String host, String path) {
 		
 		//return GET1 + path + GET2 + HOST + host + "\r\n" ;//+ KEEPALIVE + CONNECTION;
-		return GET1 + path + GET2 + HOST + host + "\r\n" + CACHE + CONNECTION;
+		return dummy;
+		//return GET1 + path + GET2 + HOST + host + "\r\n" + CACHE + CONNECTION;
 	}
 
 	@Override
