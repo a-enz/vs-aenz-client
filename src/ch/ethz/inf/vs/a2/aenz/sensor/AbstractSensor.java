@@ -67,7 +67,7 @@ public abstract class AbstractSensor implements Sensor, ResponseParser {
 			} else {
 				for (SensorListener listener : listeners) {
 					listener.onReceiveString(result);
-					Log.d("AsyncWorker", "Notify");
+					Log.d("AsyncWorker", "Notify from: " + listener.toString());
 				}
 			}
 		}

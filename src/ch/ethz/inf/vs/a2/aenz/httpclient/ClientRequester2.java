@@ -22,20 +22,22 @@ public class ClientRequester2 implements Requester, RemoteServerConfiguration{
 	public ClientRequester2(boolean json) {
 		HTTP_REQUEST = new HttpGet(URL);
 		if (json) HTTP_REQUEST.addHeader("Accept", "application/json");
-		httpClient = AndroidHttpClient.newInstance("Lib");
+
 	}
 	
 	@Override
 	public String executeRequest() throws NullPointerException {
 		try {
 			//Log.d(TAG, "Request: " );
+			httpClient = AndroidHttpClient.newInstance("Lib");
 			reader = new BufferedReader(new InputStreamReader(httpClient.execute(HTTP_REQUEST).getEntity().getContent()));
 			String res = "";
 			String tmp = null;
 			while((tmp = reader.readLine()) != null) {
 				res = res + tmp;
 			}
-			Log.d(TAG, "response received");
+			httpClient.close();
+			//Log.d(TAG, "response received: " + res);
 			return res;
 		} catch (IllegalStateException e) {
 			Log.d(TAG, "IllegalStateException");

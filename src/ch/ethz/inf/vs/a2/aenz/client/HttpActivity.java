@@ -29,6 +29,7 @@ public class HttpActivity extends Activity implements SensorListener{
 	private Handler handler;
 	private Sensor libSensor;
 	private Sensor jsonSensor;
+	private Sensor rawSensor;
 	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,30 +39,26 @@ public class HttpActivity extends Activity implements SensorListener{
         handler = new Handler();
         libSensor = SensorFactory.getInstance(SensorFactory.Type.HTML);
         jsonSensor = SensorFactory.getInstance(SensorFactory.Type.JSON);
+        rawSensor = SensorFactory.getInstance(SensorFactory.Type.RAW_HTTP);
+    	jsonSensor.registerListener(this);
+    	libSensor.registerListener(this);
+    	rawSensor.registerListener(this);
     }
     
     public void onClickRaw(View v) {
-    	HttpTask request = new HttpTask(handler);
-    	request.execute(new String[]{});
-    	try {
-			responseTxt.setText("Response Raw: " + request.get());
-		} catch (InterruptedException e) {
-			Log.d(TAG, "InterruptedException");
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			Log.d(TAG, "ExecutionException");
-			e.printStackTrace();
-		}
+    	rawSensor.getTemperature();
+    	//rawSensor.unregisterListener(this);
     }
     
     public void onClickLib(View v) {
-    	libSensor.registerListener(this);
     	libSensor.getTemperature();
+    	//libSensor.unregisterListener(this);
     }
     
     public void onClickJson(View v) {
-    	jsonSensor.registerListener(this);
+
     	jsonSensor.getTemperature();
+    	//jsonSensor.unregisterListener(this);
     }
     
     @Override
@@ -71,9 +68,8 @@ public class HttpActivity extends Activity implements SensorListener{
     
     @Override
 	public void onReceiveDouble(double value) {
-		// TODO Auto-generated method stub
     	Log.d(TAG, "Updating Double UI");
-    	responseTxt.setText("Temperature Spot1: " + value);
+    	responseTxt.setText("Temperature Spot1 Json: " + value);
 	}
 
 	@Override
@@ -81,30 +77,4 @@ public class HttpActivity extends Activity implements SensorListener{
 		Log.d(TAG, "Updating String UI");
 		responseTxt.setText(message);
 	}
-    
-    private class HttpTask extends AsyncTask<String, String, String> {
-
-    	private Handler handler;
-    	
-    	public HttpTask(Handler handler) {
-    		this.handler = handler;
-    	}
-    	
-		@Override
-		protected String doInBackground(String... params) {
-			try {
-				ClientSocket socket = new ClientSocket();
-				return socket.execute(null);
-			} catch (UnknownHostException e) {
-				e.printStackTrace();
-				return "Host not found";
-			} catch (IOException e) {
-				e.printStackTrace();
-				return "Sth wrong with IO";
-			}
-		}
-    }
-
-
-
 }
