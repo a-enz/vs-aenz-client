@@ -1,17 +1,27 @@
 package ch.ethz.inf.vs.a2.aenz.client;
 
+import java.io.IOException;
+
 import ch.ethz.inf.vs.a2.aenz.sensor.SensorListener;
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class SoapActivity extends Activity implements SensorListener {
+	
+	TextView disp;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_soapclient);
+		
+		disp = (TextView) findViewById(R.id.txt_soap_disp);
 	}
 
 	@Override
@@ -44,4 +54,27 @@ public class SoapActivity extends Activity implements SensorListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void onClickSoapManual(View v) {
+		disp.setText(R.string.txt_soap_man);
+	}
+	
+	public void onClickSoapLibrary(View v) {
+		disp.setText(R.string.txt_soap_lib);
+	}
+	
+	private class SoapTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            //set up socket connection
+        	//request temperature
+        	//return result to UI thread?
+        	return "now what?";
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+       }
+    }
+
 }

@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SOAPClient"
+            android:name=".SoapActivity"
             android:label="@string/title_activity_soapclient" >
         </activity>
 		<activity

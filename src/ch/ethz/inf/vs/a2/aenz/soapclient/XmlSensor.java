@@ -1,6 +1,13 @@
-package ch.ethz.inf.vs.a2.aenz.sensor;
+package ch.ethz.inf.vs.a2.aenz.soapclient;
 
-public class SoapSensor extends AbstractSensor{
+import ch.ethz.inf.vs.a2.aenz.sensor.AbstractSensor;
+
+public class XmlSensor extends AbstractSensor {
+	
+	
+	public void generateSOAPRequest(){
+		
+	}
 
 	@Override
 	public void getTemperature() throws NullPointerException {

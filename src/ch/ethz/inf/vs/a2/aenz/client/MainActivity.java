@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
     }
     
     public void onClickWsdl(View v) {
-    	
+    	Intent intent = new Intent(this, SoapActivity.class);
+    	this.startActivity(intent);
     }
 }
