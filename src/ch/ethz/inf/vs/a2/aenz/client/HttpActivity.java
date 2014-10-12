@@ -26,21 +26,18 @@ public class HttpActivity extends Activity implements SensorListener{
 	private TextView responseTxt;
 	private final String TAG = "HttpActivity";
 	
-	private final int NONE = 0;
-	private final int RAW = 1;
-	private final int LIB = 2;
-	private int status;
 	private Handler handler;
 	private Sensor libSensor;
+	private Sensor jsonSensor;
 	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_http);
         
         responseTxt = (TextView) findViewById(R.id.textViewResponse);
-        status = 0;
         handler = new Handler();
         libSensor = SensorFactory.getInstance(SensorFactory.Type.HTML);
+        jsonSensor = SensorFactory.getInstance(SensorFactory.Type.JSON);
     }
     
     public void onClickRaw(View v) {
@@ -63,7 +60,8 @@ public class HttpActivity extends Activity implements SensorListener{
     }
     
     public void onClickJson(View v) {
-    	
+    	jsonSensor.registerListener(this);
+    	jsonSensor.getTemperature();
     }
     
     @Override
@@ -74,12 +72,13 @@ public class HttpActivity extends Activity implements SensorListener{
     @Override
 	public void onReceiveDouble(double value) {
 		// TODO Auto-generated method stub
-    	Log.d(TAG, "WTF NaN: " + (Double.NaN == Double.NaN));
+    	Log.d(TAG, "Updating Double UI");
+    	responseTxt.setText("Temperature Spot1: " + value);
 	}
 
 	@Override
 	public void onReceiveString(String message) {
-		Log.d(TAG, "Updating UI");
+		Log.d(TAG, "Updating String UI");
 		responseTxt.setText(message);
 	}
     

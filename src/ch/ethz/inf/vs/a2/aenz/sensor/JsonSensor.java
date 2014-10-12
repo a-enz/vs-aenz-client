@@ -1,28 +1,35 @@
 package ch.ethz.inf.vs.a2.aenz.sensor;
 
-import android.util.Log;
 import ch.ethz.inf.vs.a2.aenz.http.Requester;
 import ch.ethz.inf.vs.a2.aenz.httpclient.ClientRequester2;
+import org.json.*;
 
-public class LibSensor extends AbstractSensor{
+public class JsonSensor extends AbstractSensor{
 
 	private ClientRequester2 requester;
-	private static final String TAG = "LibSensor";
+	private JSONObject parser;
 	
-	public LibSensor() {
-		requester = new ClientRequester2(false);
+	public JsonSensor() {
+		requester = new ClientRequester2(true);
+
 	}
 	
 	@Override
 	public void getTemperature() throws NullPointerException {
-		// TODO Auto-generated method stub
-		Log.d(TAG, "getting temperature");
 		new AsyncWorker().execute(new Requester[]{requester});
+		
 	}
 
 	@Override
 	public double parseResponse(String response) {
-		// TODO Auto-generated method stub
-		return Double.NaN;
+		JSONTokener tokener = new JSONTokener(response);
+		try {
+			parser = new JSONObject(tokener);
+			return parser.getDouble("value");
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return -999.0;
+		}
 	}
+
 }

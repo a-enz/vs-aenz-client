@@ -1,14 +1,10 @@
 package ch.ethz.inf.vs.a2.aenz.httpclient;
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
 import android.util.Log;
 import ch.ethz.inf.vs.a2.aenz.http.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -80,11 +76,15 @@ public class ClientSocket implements HttpSocket, RemoteServerConfiguration{
 			writer.print(simpleRequest);
 			writer.flush();
 			Log.d(TAG, "WriterError: " + writer.checkError());
-			String tmp = reader.readLine();
+			String tmp = "";
+			String res = "";
+			while((tmp = reader.readLine()) != null) {
+				res = res + tmp;
+			}
+			
 			socket.close();
 			Log.d(TAG, "Request send: " + simpleRequest);
-			Log.d(TAG, "Response: " + tmp);
-			return tmp;
+			return res;
 			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
