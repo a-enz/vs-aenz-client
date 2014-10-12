@@ -1091,7 +1091,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050042;
+        public static final int action_settings=0x7f050045;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1099,6 +1099,8 @@ containing a value of this type.
         public static final int btn_http_json=0x7f05003e;
         public static final int btn_http_lib=0x7f05003d;
         public static final int btn_http_raw=0x7f05003c;
+        public static final int btn_soap_library=0x7f050043;
+        public static final int btn_soap_manual=0x7f050042;
         public static final int btn_wsdl=0x7f050041;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
@@ -1144,6 +1146,7 @@ containing a value of this type.
         public static final int textViewResponse=0x7f05003f;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
+        public static final int txt_soap_disp=0x7f050044;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int withText=0x7f05000c;
@@ -1254,11 +1257,17 @@ containing a value of this type.
         public static final int btn_json=0x7f0a0015;
         public static final int btn_lib=0x7f0a0014;
         public static final int btn_raw=0x7f0a0013;
+        public static final int btn_soap_library=0x7f0a0019;
+        /**  strings declared by andi: 
+         */
+        public static final int btn_soap_manual=0x7f0a0018;
         public static final int btn_wsdl=0x7f0a0011;
         public static final int hello_world=0x7f0a000e;
         public static final int title_activity_sensor=0x7f0a0016;
         public static final int title_activity_soapclient=0x7f0a0012;
         public static final int txt_response=0x7f0a0017;
+        public static final int txt_soap_lib=0x7f0a001b;
+        public static final int txt_soap_man=0x7f0a001a;
     }
     public static final class style {
         /** 
