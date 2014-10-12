@@ -1,5 +1,7 @@
 package ch.ethz.inf.vs.a2.aenz.sensor;
 
+import ch.ethz.inf.vs.a2.aenz.soapclient.SoapSensor;
+
 
 public abstract class SensorFactory {
 	public static Sensor getInstance(Type type) {
@@ -15,6 +17,7 @@ public abstract class SensorFactory {
 			// return Sensor implementation using application/xml representation
 		case SOAP:
 			// return Sensor implementation using a SOAPObject
+			return new SoapSensor();
 		default:
 			return null;
 		}

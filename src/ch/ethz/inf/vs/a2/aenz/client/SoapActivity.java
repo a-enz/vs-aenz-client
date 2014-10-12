@@ -2,6 +2,9 @@ package ch.ethz.inf.vs.a2.aenz.client;
 
 import java.io.IOException;
 
+import ch.ethz.inf.vs.a2.aenz.sensor.AbstractSensor;
+import ch.ethz.inf.vs.a2.aenz.sensor.Sensor;
+import ch.ethz.inf.vs.a2.aenz.sensor.SensorFactory;
 import ch.ethz.inf.vs.a2.aenz.sensor.SensorListener;
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 public class SoapActivity extends Activity implements SensorListener {
 	
 	TextView disp;
+	Sensor soapSensor, xmlSensor;
 	
 
 	@Override
@@ -22,6 +26,8 @@ public class SoapActivity extends Activity implements SensorListener {
 		setContentView(R.layout.activity_soapclient);
 		
 		disp = (TextView) findViewById(R.id.txt_soap_disp);
+		
+		soapSensor = SensorFactory.getInstance(SensorFactory.Type.SOAP);
 	}
 
 	@Override
@@ -61,6 +67,8 @@ public class SoapActivity extends Activity implements SensorListener {
 	
 	public void onClickSoapLibrary(View v) {
 		disp.setText(R.string.txt_soap_lib);
+		soapSensor.registerListener(this);
+		soapSensor.getTemperature();
 	}
 	
 	private class SoapTask extends AsyncTask<String, Void, String> {
