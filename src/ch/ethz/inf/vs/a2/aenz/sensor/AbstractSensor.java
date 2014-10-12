@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import ch.ethz.inf.vs.a2.aenz.http.Requester;
 
 /**
@@ -59,13 +60,14 @@ public abstract class AbstractSensor implements Sensor, ResponseParser {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			double value = parseResponse(result);
-			if (value != Double.NaN) {
+			if (!Double.isNaN(value)) {
 				for (SensorListener listener : listeners) {
 					listener.onReceiveDouble(value);
 				}
 			} else {
 				for (SensorListener listener : listeners) {
 					listener.onReceiveString(result);
+					Log.d("AsyncWorker", "Notify");
 				}
 			}
 		}

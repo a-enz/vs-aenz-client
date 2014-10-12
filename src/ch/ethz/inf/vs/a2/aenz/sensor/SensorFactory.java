@@ -8,6 +8,7 @@ public abstract class SensorFactory {
 			// return Sensor implementation using a raw HTTP request
 		case HTML:
 			// return Sensor implementation using text/html representation
+			return new LibSensor();
 		case JSON:
 			// return Sensor implementation using application/json representation
 		case XML:

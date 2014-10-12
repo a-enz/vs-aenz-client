@@ -38,6 +38,7 @@ public class ClientRequester2 implements Requester, RemoteServerConfiguration{
 			while((tmp = reader.readLine()) != null) {
 				res = res + tmp;
 			}
+			Log.d(TAG, "response received");
 			return res;
 		} catch (IllegalStateException e) {
 			Log.d(TAG, "IllegalStateException");
