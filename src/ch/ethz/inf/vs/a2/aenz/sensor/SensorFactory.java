@@ -7,7 +7,7 @@ public abstract class SensorFactory {
 	public static Sensor getInstance(Type type) {
 		switch (type) {
 		case RAW_HTTP:
-			// return Sensor implementation using a raw HTTP request
+			return new RawSensor();
 		case HTML:
 			// return Sensor implementation using text/html representation
 			return new LibSensor();

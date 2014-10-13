@@ -9,6 +9,7 @@ public class JsonSensor extends AbstractSensor{
 	private ClientRequester2 requester;
 	private JSONObject parser;
 	
+	
 	public JsonSensor() {
 		requester = new ClientRequester2(true);
 
