@@ -19,7 +19,7 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 	private final String NAMESPACE = "http://webservices.vslecture.vs.inf.ethz.ch/";
 	private final String METHOD_NAME = "getSpot";
 	private final String ARG = "Spot3";
-	private final String ARG_NAME = "parameters";
+	private final String ARG_NAME = "id";
 	
 	private SoapObject request;
 	private SoapObject response;

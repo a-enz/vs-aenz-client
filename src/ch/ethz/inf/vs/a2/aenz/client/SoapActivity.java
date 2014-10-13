@@ -28,6 +28,7 @@ public class SoapActivity extends Activity implements SensorListener {
 		disp = (TextView) findViewById(R.id.txt_soap_disp);
 		
 		soapSensor = SensorFactory.getInstance(SensorFactory.Type.SOAP);
+		xmlSensor = SensorFactory.getInstance(SensorFactory.Type.XML);
 	}
 
 	@Override
@@ -63,6 +64,8 @@ public class SoapActivity extends Activity implements SensorListener {
 	
 	public void onClickSoapManual(View v) {
 		disp.setText(R.string.txt_soap_man);
+		xmlSensor.registerListener(this);
+		xmlSensor.getTemperature();
 	}
 	
 	public void onClickSoapLibrary(View v) {
