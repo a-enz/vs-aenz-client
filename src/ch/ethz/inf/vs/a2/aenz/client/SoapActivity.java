@@ -73,19 +73,5 @@ public class SoapActivity extends Activity implements SensorListener {
 		soapSensor.registerListener(this);
 		soapSensor.getTemperature();
 	}
-	
-	private class SoapTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-            //set up socket connection
-        	//request temperature
-        	//return result to UI thread?
-        	return "now what?";
-        }
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-       }
-    }
 
 }

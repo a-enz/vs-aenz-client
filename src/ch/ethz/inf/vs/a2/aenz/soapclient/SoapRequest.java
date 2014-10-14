@@ -17,7 +17,7 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 
 	private final String URL = "http://" + HOST + ":" + SOAP_PORT + "/SunSPOTWebServices/SunSPOTWebservice?wsdl";
 	private final String NAMESPACE = "http://webservices.vslecture.vs.inf.ethz.ch/";
-	private final String METHOD_NAME = "getSpot";
+	private final String METHOD_NAME = "getDiscoveredSpots";
 	private final String ARG = "Spot3";
 	private final String ARG_NAME = "id";
 	
@@ -33,7 +33,7 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 		property.setName(ARG_NAME);
 		property.setValue(ARG);
 		
-		request.addProperty(property);
+		//request.addProperty(property);
 		
 		soapEnv = new SoapSerializationEnvelope(SoapEnvelope.VER11); //no idea what version is required
 		soapEnv.setOutputSoapObject(request);
