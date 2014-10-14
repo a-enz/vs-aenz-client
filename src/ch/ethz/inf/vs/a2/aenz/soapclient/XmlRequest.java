@@ -71,8 +71,11 @@ public class XmlRequest implements Requester,  RemoteServerConfiguration{
 			
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			
-			//Log.d(TAG,"HTTP RESPONSE\n" + EntityUtils.toString(httpResponse.getEntity()));
-			return EntityUtils.toString(httpResponse.getEntity());
+			String res =  EntityUtils.toString(httpResponse.getEntity());
+			
+			Log.d(TAG,"HTTP RESPONSE\n" + res);
+			
+			return res;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "EXCEPTION: httpPost call failed";
