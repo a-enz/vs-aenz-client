@@ -21,7 +21,7 @@ public class XmlSensor extends AbstractSensor {
 
 	@Override
 	public double parseResponse(String response) {
-		Integer tempOffset = response.lastIndexOf("</temperature>");
+		Integer tempOffset = response.indexOf("</temperature>");
 		Log.d(TAG, tempOffset.toString());
 		String tempVal = response.substring(tempOffset - 5, tempOffset - 1);
 		Log.d(TAG, tempVal);

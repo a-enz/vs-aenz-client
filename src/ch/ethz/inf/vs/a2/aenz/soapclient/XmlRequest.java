@@ -67,11 +67,11 @@ public class XmlRequest implements Requester,  RemoteServerConfiguration{
 		httpClient = new DefaultHttpClient();
 		
 		try{
-			Log.d(TAG,"HTTP REQUEST: " + EntityUtils.toString(httpPost.getEntity()));
+			Log.d(TAG,"HTTP REQUEST:\n" + EntityUtils.toString(httpPost.getEntity()));
 			
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			
-			Log.d(TAG,"HTTP RESPONSE " + EntityUtils.toString(httpResponse.getEntity()));
+			//Log.d(TAG,"HTTP RESPONSE\n" + EntityUtils.toString(httpResponse.getEntity()));
 			return EntityUtils.toString(httpResponse.getEntity());
 		} catch (Exception e) {
 			e.printStackTrace();
