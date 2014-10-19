@@ -1,6 +1,7 @@
 package ch.ethz.inf.vs.a2.aenz.soapclient;
 
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
@@ -16,8 +17,9 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 
 	private final String URL = "http://" + HOST + ":" + SOAP_PORT + "/SunSPOTWebServices/SunSPOTWebservice?wsdl";
 	private final String NAMESPACE = "http://webservices.vslecture.vs.inf.ethz.ch/";
-	private final String METHOD_NAME = "getDiscoveredSpots";
+	private final String METHOD_NAME = "getSpot";
 	private final String ARG = "Spot3";
+	private final String ARG_NAME = "id";
 	
 	private SoapObject request;
 	private SoapObject response;
@@ -25,12 +27,14 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 	
 	public SoapRequest() {
 		request = new SoapObject(NAMESPACE, METHOD_NAME);
-		//request.addProperty("getSpot", ARG);
+		
+		request.addProperty(ARG_NAME, ARG);
 		
 		soapEnv = new SoapSerializationEnvelope(SoapEnvelope.VER11); //no idea what version is required
 		soapEnv.setOutputSoapObject(request);
-		soapEnv.dotNet = true;
-		//soapEnv.
+		//soapEnv.dotNet = true;
+		soapEnv.implicitTypes = true;
+		soapEnv.setAddAdornments(false);
 	}
 	
 	
@@ -41,17 +45,27 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 		try{
 
 			
-			Log.d(TAG,"attempting http call");
+			Log.d(TAG,"attempting http call to: " + URL);
 			androidHttpTransport.call(NAMESPACE + METHOD_NAME, soapEnv);
 			
 			Log.d(TAG, "call was successfull");
 			
 			response = (SoapObject) soapEnv.bodyIn;
+<<<<<<< HEAD
 			return soapEnv.bodyIn.toString();
 		} catch (Exception e){
 			Log.d(TAG, "HTTP REQUEST:\n" + androidHttpTransport.requestDump);
 			Log.d(TAG, "HTTP RESPONSE:\n" + androidHttpTransport.responseDump);
 			
+=======
+			Log.d(TAG, "count of soap properties: " + response.getPropertyCount());
+			response = (SoapObject) response.getProperty(0);
+			return response.getPropertyAsString(5);
+		} catch (Exception e){
+			Log.d(TAG, "HTTP REQUEST:\n" + androidHttpTransport.requestDump);
+			Log.d(TAG, "HTTP RESPONSE:\n" + androidHttpTransport.responseDump);
+			e.printStackTrace();
+>>>>>>> 510411223e93b28249a5e3f6e4af35fc51010d5b
 			return "EXCEPTION: http call failed";			
 		}
 	}

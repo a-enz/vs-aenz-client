@@ -25,7 +25,7 @@ public class SoapSensor extends AbstractSensor{
 
 	@Override
 	public double parseResponse(String response) {
-		return Double.NaN;
+		return Double.parseDouble(response);
 	}
 
 }
