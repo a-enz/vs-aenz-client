@@ -7,7 +7,7 @@
     <string name="btn_http">HTTP</string>
     <string name="btn_wsdl">WSDL</string>
     <string name="title_activity_soapclient">SOAPClient</string>
-    <string name="btn_raw">Raw</string>
+    <string name="btn_raw">Raw (takes approx 2 min)</string>
     <string name="btn_lib">Lib</string>
     <string name="btn_json">Json</string>
 	<string name="title_activity_sensor">Rest Service</string>

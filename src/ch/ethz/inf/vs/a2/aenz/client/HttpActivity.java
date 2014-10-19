@@ -69,12 +69,12 @@ public class HttpActivity extends Activity implements SensorListener{
     @Override
 	public void onReceiveDouble(double value) {
     	Log.d(TAG, "Updating Double UI");
-    	responseTxt.setText("Temperature Spot1 Json: " + value);
+    	responseTxt.setText("Temperature Spot1: " + value);
 	}
 
 	@Override
 	public void onReceiveString(String message) {
 		Log.d(TAG, "Updating String UI");
-		responseTxt.setText(message);
+		//responseTxt.setText(message);
 	}
 }

@@ -71,7 +71,6 @@ public class ClientSocket implements HttpSocket, RemoteServerConfiguration{
 			
 			
 			//write
-			writer.write(request);
 			writer.print(request);
 			writer.flush();
 			Log.d(TAG, "WriterError: " + writer.checkError());
