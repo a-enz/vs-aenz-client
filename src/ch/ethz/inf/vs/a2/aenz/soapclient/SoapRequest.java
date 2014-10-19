@@ -51,13 +51,6 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 			Log.d(TAG, "call was successfull");
 			
 			response = (SoapObject) soapEnv.bodyIn;
-<<<<<<< HEAD
-			return soapEnv.bodyIn.toString();
-		} catch (Exception e){
-			Log.d(TAG, "HTTP REQUEST:\n" + androidHttpTransport.requestDump);
-			Log.d(TAG, "HTTP RESPONSE:\n" + androidHttpTransport.responseDump);
-			
-=======
 			Log.d(TAG, "count of soap properties: " + response.getPropertyCount());
 			response = (SoapObject) response.getProperty(0);
 			return response.getPropertyAsString(5);
@@ -65,7 +58,6 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 			Log.d(TAG, "HTTP REQUEST:\n" + androidHttpTransport.requestDump);
 			Log.d(TAG, "HTTP RESPONSE:\n" + androidHttpTransport.responseDump);
 			e.printStackTrace();
->>>>>>> 510411223e93b28249a5e3f6e4af35fc51010d5b
 			return "EXCEPTION: http call failed";			
 		}
 	}
