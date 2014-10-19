@@ -17,7 +17,7 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 
 	private final String URL = "http://" + HOST + ":" + SOAP_PORT + "/SunSPOTWebServices/SunSPOTWebservice?wsdl";
 	private final String NAMESPACE = "http://webservices.vslecture.vs.inf.ethz.ch/";
-	private final String METHOD_NAME = "getDiscoveredSpots";
+	private final String METHOD_NAME = "getSpot";
 	private final String ARG = "Spot3";
 	private final String ARG_NAME = "id";
 	
@@ -28,16 +28,13 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 	public SoapRequest() {
 		request = new SoapObject(NAMESPACE, METHOD_NAME);
 		
-		PropertyInfo property = new PropertyInfo();
-		property.setNamespace(NAMESPACE);
-		property.setName(ARG_NAME);
-		property.setValue(ARG);
-		
-		//request.addProperty(property);
+		request.addProperty(ARG_NAME, ARG);
 		
 		soapEnv = new SoapSerializationEnvelope(SoapEnvelope.VER11); //no idea what version is required
 		soapEnv.setOutputSoapObject(request);
-		soapEnv.dotNet = true;
+		//soapEnv.dotNet = true;
+		soapEnv.implicitTypes = true;
+		soapEnv.setAddAdornments(false);
 	}
 	
 	
@@ -53,7 +50,10 @@ public class SoapRequest implements Requester, RemoteServerConfiguration{
 			
 			Log.d(TAG, "call was successfull");
 			
-			return soapEnv.bodyIn.toString();
+			response = (SoapObject) soapEnv.bodyIn;
+			Log.d(TAG, "count of soap properties: " + response.getPropertyCount());
+			response = (SoapObject) response.getProperty(0);
+			return response.getPropertyAsString(5);
 		} catch (Exception e){
 			Log.d(TAG, "HTTP REQUEST:\n" + androidHttpTransport.requestDump);
 			Log.d(TAG, "HTTP RESPONSE:\n" + androidHttpTransport.responseDump);
